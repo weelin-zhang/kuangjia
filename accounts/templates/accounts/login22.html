@@ -1,0 +1,74 @@
+{% load error_str %}
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录 - 中化监控平台</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
+    <!-- 猫头鹰捂眼特效 -->
+    <link rel="stylesheet" href="{% static 'accounts/maotouying/css/lrtk.css' %}">
+    <!-- jquery-->
+    <script type="text/javascript" src="{% static 'accounts/maotouying/js/jquery.min.js' %}"></script>
+</head>
+
+<body class="hold-transition login-page" style="background-image: url({% static 'img/login_bg2.jpg' %});background-repeat: no-repeat; background-size: 100%; ">
+<!-- 代码 开始 -->
+<div id="login">
+    <div class="login" style="height: 0;">
+            <form action="" method="post" class="container offset1 loginform">{% csrf_token %}
+                <div id="owl-login">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="text-red" style="text-align: center;">
+                    {%if form.errors %}
+                        {% error_str form.errors %}
+                    {% endif %}
+                </div>
+
+                <div class="pad">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="email" class="control-label glyphicon glyphicon-user"></label>
+                            <input id="email" type="text" name="username" placeholder="Email" tabindex="1" autofocus="autofocus" class="form-control input-medium">
+{#                            <input id="email" type="email" name="email" placeholder="Email" tabindex="1" autofocus="autofocus" class="form-control input-medium">#}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="password" class="control-label glyphicon glyphicon-lock"></label>
+                            <input id="password" type="password" name="password" placeholder="Password" tabindex="2" class="form-control input-medium">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button class="form-control btn btn-primary">Sign In</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+    <script>
+        $(function() {
+            $('#login #password').focus(function() {
+                $('#owl-login').addClass('password');
+            }).blur(function() {
+                $('#owl-login').removeClass('password');
+            });
+        });
+    </script>
+<!-- 代码 结束 -->
+</body>
+</html>

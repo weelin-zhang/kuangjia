@@ -1,0 +1,51 @@
+{% load static %}
+{% load error_str %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录 - 中化监控平台</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'AdminLTE/css/AdminLTE.min.css' %}">
+
+</head>
+<body class="hold-transition login-page" style="background-image: url({% static 'accounts/img/login_bg2.jpg' %});     background-repeat: no-repeat; background-size: 100%; ">
+<div class="login-box">
+    <div class="login-logo">
+        <p><b style="color: #fff;">中化监控平台</b></p>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <div class="text-red" style="text-align: center;">
+            {%if form.errors %}
+            {% error_str form.errors %}
+            {% endif %}
+        </div>
+
+        <form action="" method="post">{% csrf_token %}
+          <div class="form-group has-feedback">
+            <input name="username" type="text" class="form-control" placeholder="Username">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input name="password" type="password" class="form-control" placeholder="Password">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div>
+        </form>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+</body>
+</html>
