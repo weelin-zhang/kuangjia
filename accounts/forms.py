@@ -17,14 +17,14 @@ class LoginForm(forms.Form):
 
 
     def clean_username(self):
-        # clean_字段名后结果放入self.cleaned_data中
+        # 在field.clean()后执行该方法
         username = self.cleaned_data['username']
         print('username')
         print(self.cleaned_data)
         return username
 
     def clean_password(self):
-        # clean_字段名后结果放入self.cleaned_data中
+        # 在field.clean()后执行该方法
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
         print("password")
@@ -37,7 +37,7 @@ class LoginForm(forms.Form):
                 raise forms.ValidationError(u'此账号已被禁用')
 
         print(self.cleaned_data)
-        return self.cleaned_data
+        return password
 
     def get_user(self):
         return self.user_cache
