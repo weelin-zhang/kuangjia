@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'accounts',
+    'blog',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,26 @@ STATICFILES_DIRS = (
 
 # 登录成功后跳转目标
 LOGIN_REDIRECT_URL = "/"
+
+# SMTP服务地址。默认本地
+# EMAIL_HOST:
+
+# SMATP服务端口，默认25
+# EMAIL_PORT:
+
+# SMTP服务的用户名
+# EMAIL_HOST_USER:
+
+# SMTP服务的密码。
+# EMAIL_HOST_PASSWORD:
+
+# 是否使用TLS加密连接
+# EMAIL_USE_TLS:
+
+# 是否使用隐式的SSL加密连接
+# EMAIL_USE_SSL:
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'your_account@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_password'
+EMAIL_PORT = 587

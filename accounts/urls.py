@@ -10,7 +10,6 @@ urlpatterns = [
     # url(r'^logout/$', logout, {'next_page': reverse_lazy('accounts:login')}, name='logout'),
 
 
-    # url(r'^login/$', LoginView.as_view(**{"authentication_form": LoginForm, 'template_name': 'accounts/login.html'}), name='login'),
-    url(r'^login/$', LoginView.as_view(**{"authentication_form": LoginForm, 'template_name': 'accounts/login22.html'}), name='login'),
+    url(r'^login/$', LoginView.as_view(**{"authentication_form": LoginForm, 'template_name': 'accounts/login.html'}), name='login'),
     url(r'^logout/$', LogoutView.as_view(**{'next_page': reverse_lazy('accounts:login')}), name='logout'),
 ]

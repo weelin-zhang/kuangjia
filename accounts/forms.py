@@ -16,10 +16,18 @@ class LoginForm(forms.Form):
         super(LoginForm, self).__init__(*args, **kwargs)
 
 
+    def full_clean(self):
+        print("full_clean()在clean_field前面执行")
+        super().full_clean()
+
+    def clean(self):
+        print("clean 方法字clean_field()后执行,判断逻辑也可放在这里")
+        return self.cleaned_data
+
     def clean_username(self):
         # 在field.clean()后执行该方法
         username = self.cleaned_data['username']
-        print('username')
+        print('claen_username()')
         print(self.cleaned_data)
         return username
 
@@ -27,7 +35,7 @@ class LoginForm(forms.Form):
         # 在field.clean()后执行该方法
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
-        print("password")
+        print("clean_password()")
         print(self.cleaned_data)
         if username and password:
             self.user_cache = auth.authenticate(username=username, password=password)
@@ -36,7 +44,7 @@ class LoginForm(forms.Form):
             elif not self.user_cache.is_active:
                 raise forms.ValidationError(u'此账号已被禁用')
 
-        print(self.cleaned_data)
+        print("clean_data:", self.cleaned_data)
         return password
 
     def get_user(self):
